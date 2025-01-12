@@ -14,7 +14,7 @@ nav li {
 nav {
   display: flex;
   margin-bottom: 20px;
-  border-bottom: 1px solid oxlch(80% 3% 200%)
+  border-bottom: 1px solid oklch(80% 3% 200%)
 }
 
 nav a{
@@ -32,11 +32,11 @@ nav a.current{
 }
 
 nav {
-  --color--accent: oklch(66.67% 30% 296.47);
+  --color-accent: oklch(66.67% 30% 296.47);
 }
 
 html{
-  accent-color: var(--color--accent);
+  accent-color: var(--color-accent);
 }
 
 nav a:hover {
