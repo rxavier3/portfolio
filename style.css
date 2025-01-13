@@ -112,6 +112,16 @@ h1, h2, h3, h4, h5, h6 {
 .first-header header {
   text-align: center;
 }
+.exp-header header {
+  text-align: center;
+}
+
+.edu-header header {
+  text-align: center;
+}
+.skills header {
+  text-align: center;
+}
 
 .name-center {
   text-align: center;
