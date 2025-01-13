@@ -133,7 +133,7 @@ margin-bottom: 10px
 
 
 .skills li:hover {
-  color: blue;
+  color: red;
   list-style: none;
 }
 
@@ -145,4 +145,47 @@ margin-bottom: 10px
   padding: 0;
   list-style: none;
   padding-left: 0;
+}
+:root {
+  --color-primary: #182B49;     
+  --color-secondary: #006A96;  
+  --color-tertiary: #00629B;  
+}
+
+
+.education {
+  position: relative;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-tertiary) 100%);
+  color: white;
+  border-radius: 12px;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.experience {
+  position: relative;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-tertiary) 100%);
+  color: white;
+  border-radius: 12px;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.summary {
+  position: relative;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-tertiary) 100%);
+  color: white;
+  border-radius: 12px;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.skills {
+  position: relative;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--color-tertiary) 0%, var(--color-tertiary) 100%);
+  color: white;
+  border-radius: 12px;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
