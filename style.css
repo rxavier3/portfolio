@@ -51,22 +51,26 @@ form{
 display: grid;
 grid-template-columns: auto 1fr;
 gap: 1em;
+  
+  label {
+      display:grid;
+      grid-template-columns:subgrid;
+      grid-column: 1/-1;
+    
+  }
+  button{
+      grid-column: 1 / -1;
+  }
 }
 
-label{
-display:grid;
-grid-template-columns:subgrid;
-grid-column: 1/-1;
 
-}
 
-button{
-grid-column: 1 / -1;
-}
+
 
 .projects {
 display: grid;
 grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+gap: 1em;
 }
 
 .projects article {
