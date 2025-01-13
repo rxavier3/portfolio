@@ -156,7 +156,7 @@ margin-bottom: 10px
 .education {
   position: relative;
   padding: 2rem;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-tertiary) 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-tertiary) 100%), url('images/triton.png');
   color: white;
   border-radius: 12px;
   margin: 2rem 0;
@@ -188,4 +188,17 @@ margin-bottom: 10px
   border-radius: 12px;
   margin: 2rem 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.education-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.education-image {
+  width: 40%;
+  height: auto;
+  border-radius: 8px;
+  margin-right: 2rem;
+  object-fit: cover;
 }
