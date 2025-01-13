@@ -156,7 +156,7 @@ margin-bottom: 10px
 .education {
   position: relative;
   padding: 2rem;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-tertiary) 100%), url('images/triton.png');
+  background: linear-gradient(135deg, blue, gold 100%), url('images/triton.png');
   color: white;
   border-radius: 12px;
   margin: 2rem 0;
@@ -183,7 +183,7 @@ margin-bottom: 10px
 .skills {
   position: relative;
   padding: 2rem;
-  background: linear-gradient(135deg, var(--color-tertiary) 0%, var(--color-tertiary) 100%);
+  background: linear-gradient(135deg, var(--color-tertiary) 0%, green 100%);
   color: white;
   border-radius: 12px;
   margin: 2rem 0;
