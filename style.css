@@ -161,6 +161,7 @@ margin-bottom: 10px
   border-radius: 12px;
   margin: 2rem 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: grid;
 }
 .experience {
   position: relative;
