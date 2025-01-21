@@ -223,3 +223,14 @@ margin-bottom: 10px
   border-radius: 8px;
   object-fit: cover;
 }
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+}
+
+.color-scheme select {
+  font: inherit;
+  margin-left: 0.5em;
+}
