@@ -33,9 +33,11 @@ padding-bottom: 0.1em
 
 nav {
 --color-accent: oklch(66.67% 30% 296.47);
+
 }
 
 html{
+color-scheme: light dark;
 accent-color: var(--color-accent);
 }
 
