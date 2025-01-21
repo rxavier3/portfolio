@@ -29,7 +29,7 @@ let pages = [
     { url: '', title: 'Home' },
     { url: 'projects/', title: 'Projects' },
     { url: 'contact/', title: 'Contact' },
-    { url: 'GitHub/', title: 'GitHub' },
+    { url: 'https://github.com/rxavier3/portfolio', title: 'GitHub' },
     { url: 'Resume/', title: 'Resume/CV' }
   ];
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
