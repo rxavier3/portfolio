@@ -14,11 +14,13 @@ console.log('IT’S ALIVE!');
 
 let pages = [
     { url: '', title: 'Home' },
-    { url: 'projects/index.html', title: 'Projects' },
-    { url: 'contact/index.html', title: 'Contact' },
+    { url: 'projects/', title: 'Projects' },
+    { url: 'contact/', title: 'Contact' },
     { url: 'GitHub/', title: 'GitHub' },
-    { url: 'Resume/index.html', title: 'Resume/CV' }
+    { url: 'Resume/', title: 'Resume/CV' }
   ];
+const ARE_WE_HOME = document.documentElement.classList.contains('home');
+
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 
@@ -30,4 +32,3 @@ for (let p of pages) {
     nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
 
   }
-  const ARE_WE_HOME = document.documentElement.classList.contains('home');
