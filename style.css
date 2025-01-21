@@ -16,6 +16,14 @@ display: flex;
 margin-bottom: 20px;
 border-bottom: 1px solid oklch(80% 3% 200%)
 }
+nav {
+  --border-color: oklch(50% 10% 200 / 40%); /* Darker and semi-transparent color */
+}
+
+/* Apply the variable for borders */
+nav {
+  border-bottom-color: var(--border-color);
+}
 
 nav a{
 flex: 1;
