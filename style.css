@@ -17,10 +17,9 @@ margin-bottom: 20px;
 border-bottom: 1px solid oklch(80% 3% 200%)
 }
 nav {
-  --border-color: oklch(50% 10% 200 / 40%); /* Darker and semi-transparent color */
+  --border-color: oklch(50% 10% 200 / 40%);
 }
 
-/* Apply the variable for borders */
 nav {
   border-bottom-color: var(--border-color);
 }
@@ -51,6 +50,7 @@ accent-color: var(--color-accent);
 
 nav a:hover {
 background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+border-bottom-color: #0066cc;
 }
 
 input, textarea, button{
