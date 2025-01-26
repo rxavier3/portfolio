@@ -94,3 +94,21 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
   });
 }
 
+export async function fetchGitHubData(username) {
+  try {
+    // Fetch data from GitHub API
+    const response = await fetch(`https://api.github.com/users/${username}`);
+    
+    // If the response is not OK, throw an error
+    if (!response.ok) {
+      throw new Error(`Failed to fetch GitHub data for ${username}: ${response.statusText}`);
+    }
+    
+    // Parse the response as JSON and return the data
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching or parsing GitHub data:', error);
+  }
+}
+
