@@ -10,5 +10,5 @@ const projectsTitle = document.querySelector('.projects-title');
 
 // Update the text content of the projects title with the count
 if (projectsTitle) {
-    projectsTitle.textContent = `(${projectsCount}) Projects`;
+    projectsTitle.textContent = `${projectsCount} Projects`;
 }
