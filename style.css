@@ -267,10 +267,9 @@ margin-bottom: 10px
   margin-top: 15px;
 }
 
-/* Grid styling for the <dl> */
 .stats-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* Two equal columns */
+  grid-template-columns: 1fr 1fr;  
   gap: 10px;
   grid-template-rows: auto;
 }
@@ -286,7 +285,6 @@ margin-bottom: 10px
   grid-row: 2;  
 }
 
-/* Link to GitHub profile */
 #github-profile-link {
   color: #0077b6;
   text-decoration: none;
