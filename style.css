@@ -234,3 +234,64 @@ margin-bottom: 10px
   font: inherit;
   margin-left: 0.5em;
 }
+
+#profile-stats {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  background-color: #f4f4f9;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+#toggle-stats {
+  width: 100%;
+  padding: 10px;
+  background-color: #0077b6;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+#toggle-stats:hover {
+  background-color: #005f8b;
+}
+
+#stats-content {
+  display: none;  
+  margin-top: 15px;
+}
+
+/* Grid styling for the <dl> */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* Two equal columns */
+  gap: 10px;
+  grid-template-rows: auto;
+}
+
+.stats-grid dt {
+  font-weight: bold;
+  text-align: right;  
+  grid-row: 1;  
+}
+
+.stats-grid dd {
+  text-align: left;  
+  grid-row: 2;  
+}
+
+/* Link to GitHub profile */
+#github-profile-link {
+  color: #0077b6;
+  text-decoration: none;
+}
+
+#github-profile-link:hover {
+  text-decoration: underline;
+}

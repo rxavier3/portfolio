@@ -22,6 +22,14 @@ if (githubData) {
     } else {
       console.error('Element #profile-stats not found.');
     }
-  } else {
+  
+    const toggleButton = document.querySelector('#toggle-stats');
+    toggleButton.addEventListener('click', () => {
+        const isContentVisible = statsContent.style.display === 'block';
+        statsContent.style.display = isContentVisible ? 'none' : 'block';
+        toggleButton.textContent = isContentVisible ? 'Show Profile Stats' : 'Hide Profile Stats';
+    });
+  }else {
     console.error('Failed to fetch GitHub data.');
   }
+  
