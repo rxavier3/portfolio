@@ -1,40 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" class = "home">
+<html lang="en" class="home">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = 'stylesheet' href = 'style.css'>
+    <title>Ryan_Xavier: Personal site and portfolio</title>
+    <link rel="stylesheet" href="style.css">
     <script src="global.js" type="module"></script>
     <script src="index.js" type="module" defer></script>
-
-   
-
 </head>
-
-<title>Ryan_Xavier: Personal site and portfolio </title>
-<h1>Ryan Xavier</h1>
-<p>Hi, welcome to my personal portfolio, now online! I am motivated and ready to work!</p>
-<p>Currently, I am a recent graduate of UCSD in Data Science with professional experience.</p>
-<img src = "images/IMG_1343.jpeg" alt = "A nice view of a lake in a cool park" height="200" width="200">
-<figcaption>A nice view of a lake in a cool park</figcaption>
 <body>
+    <h1>Ryan Xavier</h1>
+    <p>Hi, welcome to my personal portfolio, now online! I am motivated and ready to work!</p>
+    <p>Currently, I am a recent graduate of UCSD in Data Science with professional experience.</p>
+    
+    <figure>
+        <img src="images/IMG_1343.jpeg" alt="A nice view of a lake in a cool park" height="200" width="200">
+        <figcaption>A nice view of a lake in a cool park</figcaption>
+    </figure>
+
     <h2>Latest Projects</h2>
-    <div class = "projects">
-        <script src="index.js" type="module"></script>
-    </div>
+    <div class="projects"></div>
+
     <div id="profile-stats">
         <button class="toggle-stats">Show Profile Stats</button>
         <div class="stats-content">
-          <dl class="stats-grid">
-            <dt>Public Repos:</dt><dd class="public-repos">Loading..</dd>
-            <dt>Followers:</dt><dd class="followers">Loading..</dd>
-            <dt>Following:</dt><dd class="following">Loading..</dd>
-            <dt>Public Gists:</dt><dd class="public-gists">Loading..</dd>
-          </dl>
-          <p>View profile: <a class="github-profile-link" href="#" target="_blank">GitHub Profile</a></p>
+            <dl class="stats-grid">
+                <dt>Public Repos:</dt><dd class="public-repos">Loading..</dd>
+                <dt>Followers:</dt><dd class="followers">Loading..</dd>
+                <dt>Following:</dt><dd class="following">Loading..</dd>
+                <dt>Public Gists:</dt><dd class="public-gists">Loading..</dd>
+            </dl>
+            <p>View profile: <a class="github-profile-link" href="#" target="_blank">GitHub Profile</a></p>
         </div>
     </div>
-
-
 </body>
 </html>

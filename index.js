@@ -1,35 +1,40 @@
 import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
+
 const projects = await fetchJSON('lib/projects.json');
 const latestProjects = projects.slice(0, 3);
 const projectsContainer = document.querySelector('.projects');
 renderProjects(latestProjects, projectsContainer, 'h2');
+
 const githubData = await fetchGitHubData('rxavier3');
 if (githubData) {
-    // Select the container element where the stats will be displayed
-    const profileStats = document.querySelector('#profile-stats');
+    // Update the stats values instead of replacing the entire content
+    const statsContent = document.querySelector('.stats-content');
+    if (statsContent) {
+        // Update only the dd elements with new values
+        statsContent.querySelector('.public-repos').textContent = githubData.public_repos;
+        statsContent.querySelector('.followers').textContent = githubData.followers;
+        statsContent.querySelector('.following').textContent = githubData.following;
+        statsContent.querySelector('.public-gists').textContent = githubData.public_gists;
+        
+        // Update the GitHub profile link
+        const profileLink = statsContent.querySelector('.github-profile-link');
+        if (profileLink) {
+            profileLink.href = githubData.html_url;
+        }
 
-    if (profileStats) {
-      // Dynamically update the content using template literals
-      profileStats.innerHTML = `
-        <dl>
-          <dt>Public Repos:</dt><dd>${githubData.public_repos}</dd>
-          <dt>Followers:</dt><dd>${githubData.followers}</dd>
-          <dt>Following:</dt><dd>${githubData.following}</dd>
-          <dt>Public Gists:</dt><dd>${githubData.public_gists}</dd>
-        </dl>
-        <p>View profile: <a href="${githubData.html_url}" target="_blank">GitHub Profile</a></p>
-      `;
+        // Set up toggle functionality
+        const toggleButton = document.querySelector('.toggle-stats');
+        if (toggleButton) {
+            toggleButton.addEventListener('click', () => {
+                statsContent.classList.toggle('hidden');
+                toggleButton.textContent = statsContent.classList.contains('hidden') 
+                    ? 'Show Profile Stats' 
+                    : 'Hide Profile Stats';
+            });
+        }
     } else {
-      console.error('Element #profile-stats not found.');
+        console.error('Stats content container not found.');
     }
-  
-    const toggleButton = document.querySelector('.toggle-stats');
-    toggleButton.addEventListener('click', () => {
-        const isContentVisible = statsContent.style.display === 'block';
-        statsContent.style.display = isContentVisible ? 'none' : 'block';
-        toggleButton.textContent = isContentVisible ? 'Show Profile Stats' : 'Hide Profile Stats';
-    });
-  }else {
+} else {
     console.error('Failed to fetch GitHub data.');
-  }
-  
+}
