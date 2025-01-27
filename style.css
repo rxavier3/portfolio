@@ -235,7 +235,7 @@ margin-bottom: 10px
   margin-left: 0.5em;
 }
 
-#profile-stats {
+.profile-stats {
   width: 100%;
   max-width: 500px;
   margin: 20px auto;
@@ -246,7 +246,7 @@ margin-bottom: 10px
   position: relative;
 }
 
-#toggle-stats {
+.toggle-stats {
   width: 100%;
   padding: 10px;
   background-color: #0077b6;
@@ -258,11 +258,11 @@ margin-bottom: 10px
   text-align: center;
 }
 
-#toggle-stats:hover {
+.toggle-stats:hover {
   background-color: #005f8b;
 }
 
-#stats-content {
+.stats-content {
   display: none;  
   margin-top: 15px;
 }
@@ -285,11 +285,11 @@ margin-bottom: 10px
   grid-row: 2;  
 }
 
-#github-profile-link {
+.github-profile-link {
   color: #0077b6;
   text-decoration: none;
 }
 
-#github-profile-link:hover {
+.github-profile-link:hover {
   text-decoration: underline;
 }
