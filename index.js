@@ -23,7 +23,7 @@ if (githubData) {
       console.error('Element #profile-stats not found.');
     }
   
-    const toggleButton = document.querySelector('#toggle-stats');
+    const toggleButton = document.querySelector('.toggle-stats');
     toggleButton.addEventListener('click', () => {
         const isContentVisible = statsContent.style.display === 'block';
         statsContent.style.display = isContentVisible ? 'none' : 'block';
