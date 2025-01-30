@@ -7,7 +7,6 @@ renderProjects(latestProjects, projectsContainer, 'h2');
 
 const githubData = await fetchGitHubData('rxavier3');
 if (githubData) {
-    // Update the stats values instead of replacing the entire content
     const statsContent = document.querySelector('.stats-content');
     if (statsContent) {
         // Update only the dd elements with new values
@@ -16,13 +15,11 @@ if (githubData) {
         statsContent.querySelector('.following').textContent = githubData.following;
         statsContent.querySelector('.public-gists').textContent = githubData.public_gists;
         
-        // Update the GitHub profile link
         const profileLink = statsContent.querySelector('.github-profile-link');
         if (profileLink) {
             profileLink.href = githubData.html_url;
         }
 
-        // Set up toggle functionality
         const toggleButton = document.querySelector('.toggle-stats');
         if (toggleButton) {
             toggleButton.addEventListener('click', () => {

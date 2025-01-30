@@ -242,3 +242,62 @@ margin-bottom: 10px
 .stats-content.hidden {
   display: none;
 }
+
+#profile-stats {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: oklch(90% 5% 200 / 10%);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-stats {
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.toggle-stats:hover {
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.stats-grid dt {
+  grid-row: 1;
+  font-weight: bold;
+}
+
+.stats-grid dd {
+  grid-row: 2;
+  margin: 0;
+}
+
+.stats-content {
+  padding: 10px;
+  background-color: white;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.stats-content.hidden {
+  display: none;
+}
+
+.github-profile-link {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.github-profile-link:hover {
+  text-decoration: underline;
+}
