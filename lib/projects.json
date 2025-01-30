@@ -19,13 +19,15 @@
         "description": "Created multiple models to forecast weather in Argentina, learning the techniques and skills to apply data science to meterology professionally"
     },
     {
-        "title": "Data Visualization of ",
+        "title": "Data Visualization of Weather Across U.S. Metropolitan Cities ",
+        "year": 2025,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Sapiente tempora nulla autem impedit, accusantium molestiae maxime. Quas, placeat sapiente mollitia eius reiciendis hic minus eos fuga commodi dolorum debitis incidunt laborum impedit facere ad, rem necessitatibus corporis voluptatibus."
+        "description": "Preprocessed data from a dataset containing weather across various U.S. cities, and created an geospatial map visualizing the change of weather across seasons in each city."
     },
     {
-        "title": "Itaque laborum fugiat odio.",
+        "title": "Uber Data Analysis",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "year": 2022,
         "description": "Suscipit id ipsa ea rerum corporis illo aperiam amet, expedita magnam! Aspernatur nulla error perspiciatis, quisquam perferendis quaerat quo earum sunt odio atque repellat ipsum. Illum non harum at! Exercitationem."
     },
     {
