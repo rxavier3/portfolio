@@ -1,63 +1,75 @@
 
 [
     {
-        "title": "Lorem ipsum dolor sit.",
+        "title": "Premier League Table Prediction Analysis",
+        "year": 2025,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro necessitatibus expedita sequi autem explicabo ducimus totam nesciunt assumenda quasi asperiores, voluptas placeat pariatur, consequuntur veniam. Quasi accusantium corrupti fugiat sequi."
+        "description": "Predicted next season's Premier League final table utilizing statistical modeling techniques from scikit-learn. Scraped Premier League data from internet."
     },
     {
-        "title": "Quod nihil provident aliquid.",
+        "title": "Recipes and Ratings Analysis",
+        "year": 2024,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Dolor exercitationem deserunt molestiae beatae earum magnam dolorem voluptatem quos dolore odit soluta laudantium doloribus unde, ducimus, vel nobis itaque qui? Dolor, laborum? Quas ipsum exercitationem corporis obcaecati possimus nam?"
+        "description": "Utilizing a large dataset of recipe and rating data, I worked on a project on determining if a recipe is high-calorie or low-calorie"
     },
     {
-        "title": "Blanditiis unde porro vitae?",
+        "title": "Weather Forecasting of Argentina",
+        "year": 2023,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Ad rem tempore vel et, sequi vitae. Et, voluptatum adipisci beatae assumenda laboriosam sit. Nemo, facilis doloremque repellat blanditiis quidem natus deserunt, dolor magni voluptatem assumenda et sequi quis! Saepe!"
+        "description": "Created multiple models to forecast weather in Argentina, learning the techniques and skills to apply data science to meterology professionally"
     },
     {
-        "title": "Inventore quaerat voluptatibus eligendi?",
+        "title": "Data Visualization of Weather Across U.S. Metropolitan Cities ",
+        "year": 2025,
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Sapiente tempora nulla autem impedit, accusantium molestiae maxime. Quas, placeat sapiente mollitia eius reiciendis hic minus eos fuga commodi dolorum debitis incidunt laborum impedit facere ad, rem necessitatibus corporis voluptatibus."
+        "description": "Preprocessed data from a dataset containing weather across various U.S. cities, and created an geospatial map visualizing the change of weather across seasons in each city."
     },
     {
-        "title": "Itaque laborum fugiat odio.",
+        "title": "Uber Data Analysis",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Suscipit id ipsa ea rerum corporis illo aperiam amet, expedita magnam! Aspernatur nulla error perspiciatis, quisquam perferendis quaerat quo earum sunt odio atque repellat ipsum. Illum non harum at! Exercitationem."
+        "year": 2022,
+        "description": "Analyzed Uber ride data, analyzing which trips were most likely to be used for business trips, which trips have longer durations, etc.."
     },
     {
-        "title": "Accusamus facilis quaerat autem.",
+        "title": "Credit Card Fraud Analysis",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Officiis quam esse delectus. Iste dignissimos suscipit molestiae rerum enim, magnam ipsam necessitatibus corrupti repellat non consequatur eaque aperiam, quam quidem cumque, et blanditiis veritatis consectetur recusandae reprehenderit. Pariatur, dignissimos?"
+        "year": 2020,
+        "description": "Used decision trees, pipelines, and more tools and techniques to predict credit card fraud done with good accuracy."
     },
     {
-        "title": "Beatae accusantium odio incidunt.",
+        "title": "Spotify Music Picker",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Repudiandae odit, voluptatum corrupti nesciunt harum quidem. Possimus quas voluptatibus unde explicabo sit perspiciatis expedita, at iure itaque doloremque quasi debitis neque fugiat nemo maiores laudantium, cupiditate deleniti quia error?"
+        "year": 2022,
+        "description": "Based on your listening history and a survey, my application generates songs that you would most likely prefer to listen to."
     },
     {
-        "title": "Modi ipsa officiis numquam.",
+        "title": "Airbnb Data Visualization",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Numquam unde eligendi molestiae earum eaque suscipit non maxime! Natus voluptate fugit vero a, vitae molestiae eveniet non ullam culpa placeat maxime consequatur officia sapiente earum aut numquam dignissimos nobis."
+        "year":2024,
+        "description": "Created an SQL database, populated it using large data of Airbnb prices and locations in Seattle, ran queries, then created visualizations in Tableau"
     },
     {
-        "title": "Vitae esse nobis quos?",
+        "title": "Movie Sentiment Analysis",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Quas ullam tempore velit dolorem nobis voluptas molestiae voluptatum et neque assumenda saepe ut deleniti, itaque porro expedita esse cupiditate non tempora odio. Voluptate nobis ipsa ab libero consequatur porro."
+        "year": 2021,
+        "description": "A simple prediction algorithm, running sentiment analysis on movie reviews to predict overall rating."
     },
     {
-        "title": "Quaerat laudantium aliquam voluptas.",
+        "title": "Text mining the Gutenberg library of books",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Tempora, earum quasi distinctio impedit delectus modi perferendis soluta officia quaerat inventore magni dicta sequi, maxime, iure unde numquam cumque autem corporis. Placeat id necessitatibus aperiam repellendus? Perspiciatis, atque fugit."
+        "year": 2024,
+        "description": "Utilizing data from the open-source Gutenberg Library, I trained a autocorrect algorithm based on the n-gram model."
     },
     {
-        "title": "Ex maiores animi fugiat?",
+        "title": "Data Visualization of Flights Across the U.S.",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Ab eveniet quam, aperiam repudiandae et obcaecati quas vero voluptatem velit iure nesciunt quia saepe voluptas ad? Commodi dignissimos beatae, dolore ipsum esse culpa tempore architecto neque optio tenetur velit?"
+        "year":2025,
+        "description": "Made a data visualization in plotly of flights across the United States, helping viewers find trends in flight routes and destinations"
     },
     {
-        "title": "Ullam reprehenderit vel quaerat.",
+        "title": "Image Filter and Upscaler",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Quo ipsam maiores minus sit voluptatum praesentium nobis, voluptatem dignissimos voluptates alias aut fuga asperiores impedit doloremque illum vel aperiam accusantium omnis maxime. Voluptates earum laudantium magni accusantium minima illum."
+        "year": 2024,
+        "description": "With Python, I worked on a project that decodes pixels and upscales images, puts images through filters, and remaps grayscale images into colored images."
     }
 ]

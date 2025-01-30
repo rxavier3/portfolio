@@ -242,3 +242,19 @@ margin-bottom: 10px
 .stats-content.hidden {
   display: none;
 }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /
+  gap: 10px; 
+}
+
+.stats-grid dt {
+  grid-row: 1; /* Places all <dt> elements in the first row */
+  text-align: center; 
+}
+
+.stats-grid dd {
+  grid-row: 2; 
+  text-align: center; 
+}
