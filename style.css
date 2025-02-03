@@ -319,3 +319,9 @@ ul.legend li em {
   }
 }
 
+svg:has(path:hover) {
+  path:not(:hover) {
+    opacity: 50%;
+  }
+}
+
