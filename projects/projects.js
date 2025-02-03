@@ -96,8 +96,24 @@ function setQuery(newQuery) {
 }
 
 let searchInput = document.getElementsByClassName('searchBar')[0];
-
+function renderFilteredProjects(filteredProjects, containerElement, headingLevel = 'h2') {
+    
+  
+    // Render the filtered projects
+    filteredProjects.forEach(project => {
+      const article = document.createElement('article');
+      article.innerHTML = `
+        <${headingLevel}>${project.title}</${headingLevel}>
+        <img src="${project.image}" alt="${project.title}">
+        <div class="project-details">
+          <p>${project.description}</p>
+          <p class="project-year">${project.year}</p>
+        </div>
+      `;
+      containerElement.appendChild(article);
+    });
+  }
 searchInput.addEventListener('change', (event) => {
   let updatedProjects = setQuery(event.target.value);
-  renderProjects(updatedProjects);
+  renderFilteredProjects(updatedProjects, projectsContainer);
 });
