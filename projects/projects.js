@@ -44,7 +44,8 @@ if (projectsTitle) {
 let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 
 // Data for the pie chart
-let data = [1, 2];
+let data = [1, 2, 3, 4, 5, 5];
+
 
 // Use d3.pie() to calculate the start and end angles for each slice
 let sliceGenerator = d3.pie();
