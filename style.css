@@ -258,3 +258,11 @@ margin-bottom: 10px
   grid-row: 2; 
   text-align: center; 
 }
+
+.project-year {
+  font-family: 'Baskerville', serif;
+  font-variant-numeric: oldstyle-nums;
+  color: gray;
+  font-size: 0.9rem; 
+  margin-top: 0.5rem; 
+}
