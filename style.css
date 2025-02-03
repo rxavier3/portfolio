@@ -321,3 +321,20 @@ svg:has(path:hover) {
 path {
   transition: 300ms;
 }
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
+
+  &:is(.legend li) {
+    font-weight: bold;
+    border-left: 4px solid var(--color);
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+path {
+  cursor: pointer;
+}
