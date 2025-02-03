@@ -99,5 +99,5 @@ let searchInput = document.getElementsByClassName('searchBar')[0];
 
 searchInput.addEventListener('change', (event) => {
   let updatedProjects = setQuery(event.target.value);
-  // TODO: render updated projects!
+  renderProjects(updatedProjects);
 });
