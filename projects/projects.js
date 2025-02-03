@@ -175,7 +175,7 @@ function recalculate(projectsGiven) {
 
   for (let i = 0; i < arcs.length; i++) {
       let path = document.createElementNS(svgNS, "path");
-      path.setAttribute("d", arcsGiven[i]);
+      path.setAttribute("d", arcs[i]);
       path.setAttribute("fill", colors(i));
 
       path.addEventListener("click", () => {
