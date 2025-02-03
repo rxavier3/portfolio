@@ -116,7 +116,7 @@ function renderFilteredProjects(filteredProjects, containerElement, headingLevel
   searchInput.addEventListener('change', (event) => {
     // Get the filtered projects based on search query
     let filteredProjects = setQuery(event.target.value);
-    renderFilteredProjects(filteredProjects, projectsContainer, 'h2');
+    renderProjects(filteredProjects, projectsContainer, 'h2');
     
     // Re-calculate rolled data
     let newRolledData = d3.rollups(
@@ -126,39 +126,36 @@ function renderFilteredProjects(filteredProjects, containerElement, headingLevel
     );
     
     // Re-calculate data
-    let newData = newRolledData.map(([year, count]) => {
+    let data = newRolledData.map(([year, count]) => {
       return { value: count, label: year };
     });
   
     // Re-calculate slice generator, arc data, arc, etc.
-    let newSliceGenerator = d3.pie().value(d => d.value);
-    let newArcData = newSliceGenerator(newData);
-    let newArcs = newArcData.map(d => arcGenerator(d));
-  
-    // Clear the SVG paths (but not the whole SVG element)
-    let newSVG = d3.select('svg');
-    newSVG.selectAll('path').remove();  // Remove all paths (pie slices)
-  
-    // Clear the legend
-    let newLegend = d3.select('.legend');
-    newLegend.selectAll('path').remove(); // Clear the legend
-  
-    // Re-render the pie chart (arcs)
-    newArcs.forEach((arc, idx) => {
-      // Append the path for each arc (slice)
-      newSVG.append('path')
-        .attr('d', arc)
-        .attr('fill', colors(idx))  // Use the color scale
-        .style('cursor', 'pointer')
-      
+    let colors = d3.scaleOrdinal(d3.schemeTableau10);
+    let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
+    let sliceGenerator = d3.pie().value((d) => d.value);
+    let arcData = sliceGenerator(data);
+
+    // Clear any previous content in the SVG before appending new paths
+    d3.select("#pie-chart").selectAll("*").remove();
+
+    // Append paths to the SVG
+    let svg = d3.select("#pie-chart");
+    arcData.forEach((d, idx) => {
+    svg.append("path")
+        .attr("d", arcGenerator(d))
+        .attr("fill", colors(idx));
     });
 
-    newData.forEach((d, idx) => {
-        newLegend.append('li')
-              .attr('style', `--color:${colors(idx)}`) 
-              .html(`<span class="swatch" style="background-color: ${colors(idx)}"></span> ${d.label} <em>(${d.value})</em>`);
-    });
+    // Clear and update legend
+    let legend = d3.select(".legend").html("");
+
+    data.forEach((d, idx) => {
+    legend.append("li")
+        .attr("style", `--color:${colors(idx)}`)
+        .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
   });
+});
 
 let selectedIndex = -1;
 function recalculate(projectsGiven) {
@@ -173,65 +170,64 @@ function recalculate(projectsGiven) {
     return newData;
 }
 for (let i = 0; i < arcs.length; i++) {
-    const svgNS = "http://www.w3.org/2000/svg"; // to create <path> tag in memory
-    let path = document.createElementNS(svgNS, "path");
-  
-    path.setAttribute("d", arcs[i]);
-    path.setAttribute("fill", colors(i));
-    path.addEventListener('click', (event) => {
-        selectedIndex = selectedIndex === i ? -1 : i;
-        document.querySelectorAll('path').forEach((p, i) => { // path, index
-            if (i === selectedIndex) {
-                p.classList.add('selected');
-            } else {
-                p.classList.remove('selected');
-            }
-        })
-        if (selectedIndex !== -1) {
-            // retrieve the selected year
-            let selectedYear = data[selectedIndex].label
-            // filter projects based on the year
-            let filteredProjects2 = projects.filter(project => project.year === selectedYear);
-            renderFilteredProjects(filteredProjects2, projectsContainer, 'h2');
-            let newData = recalculate(filteredProjects2)
-            let newSVG = d3.select("svg");
-            newSVG.selectAll('path').remove();  // Remove old pie chart slices
+  const svgNS = "http://www.w3.org/2000/svg";
+  d3.select("#pie-chart").selectAll("path").remove();
 
-            let newLegend = d3.select(".legend");
-            newLegend.selectAll('path').remove(); 
-            newData.forEach((d) => {
-                newLegend.append('li').attr('style', "--color:#d0457c").html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
-            });
-        }else{
-            renderProjects(projects, projectsContainer, 'h2');
-            let newData = recalculate(projects);
+  for (let i = 0; i < arcsGiven.length; i++) {
+      let path = document.createElementNS(svgNS, "path");
+      path.setAttribute("d", arcsGiven[i]);
+      path.setAttribute("fill", colors(i));
+
+      path.addEventListener("click", () => {
+      selectedIndex = selectedIndex === i ? -1 : i;
+
+      document.querySelectorAll("path").forEach((p, idx) => {
+          if (idx === selectedIndex) {
+          p.classList.add("selected");
+          } else {
+          p.classList.remove("selected");
+          }
+      });
+  if (selectedIndex !== -1) {
+          // retrieve the selected year
+        let selectedYear = dataGiven[selectedIndex].label;
+          // filter projects by the selected year
+        let filteredProjects = projectsGiven.filter((p) => p.year === selectedYear);
+          // render filtered projects
+        renderProjects(filteredProjects, projectsContainer, "h2");
+      } else {
+          // render projects directly
+        renderProjects(projects, projectsContainer, "h2");
+      }
+      // update the legend
+      let newData = recalculate(projects);
       
-            let newLegend = d3.select(".legend");
-            newLegend.selectAll('path').remove(); 
-            newData.forEach((d, idx) => {
-                newLegend.append('li').attr('style', `--color:${colors(idx)}`).html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
-            });
-
-        }
+      let newLegend = d3.select(".legend");
+      newLegend.selectAll('path').remove(); 
+      newData.forEach((d, idx) => {
+          newLegend.append('li').attr('style', `--color:${colors(idx)}`).html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+      });      });
+      d3.select("#pie-chart").node().appendChild(path);
+  }
     
   
-    let li = document.createElement('li');
-    li.style.setProperty('--color', colors(i));
+    // let li = document.createElement('li');
+    // li.style.setProperty('--color', colors(i));
   
-    // Create the swatch span
-    let swatch = document.createElement('span');
-    swatch.className = 'swatch';
-    swatch.style.backgroundColor = colors(i);
+    // // Create the swatch span
+    // let swatch = document.createElement('span');
+    // swatch.className = 'swatch';
+    // swatch.style.backgroundColor = colors(i);
     
-    // Append the swatch to the list item
-    li.appendChild(swatch);
+    // // Append the swatch to the list item
+    // li.appendChild(swatch);
   
-    // Set the label and value
-    li.innerHTML += `${data[i].label} <em>(${data[i].value})</em>`;
-    newLegend.appendChild(li);
+    // // Set the label and value
+    // li.innerHTML += `${data[i].label} <em>(${data[i].value})</em>`;
+    // newLegend.appendChild(li);
     
-    svg.appendChild(path);
-    });
+    // svg.appendChild(path);
+    
 }
 
   
