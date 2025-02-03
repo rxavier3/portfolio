@@ -311,6 +311,7 @@ ul.legend li em {
   font-style: italic;
   color: #555;
 }
+
 .selected {
   --color: oklch(60% 45% 0) !important;
 
@@ -323,5 +324,10 @@ svg:has(path:hover) {
   path:not(:hover) {
     opacity: 50%;
   }
+}
+
+path {
+  transition: opacity 300ms;
+  cursor: pointer;
 }
 

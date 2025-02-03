@@ -203,11 +203,9 @@ function recalculate(projectsGiven) {
 for (let i = 0; i < arcs.length; i++) {
     const svgNS = "http://www.w3.org/2000/svg"; // to create <path> tag in memory
     let path = document.createElementNS(svgNS, "path");
-    
+  
     path.setAttribute("d", arcs[i]);
     path.setAttribute("fill", colors(i));
-    let newLegend = document.querySelector('.legend');
-    let newSVG = d3.select('svg');
     path.addEventListener('click', (event) => {
         selectedIndex = selectedIndex === i ? -1 : i;
         document.querySelectorAll('path').forEach((p, i) => { // path, index
@@ -229,19 +227,14 @@ for (let i = 0; i < arcs.length; i++) {
 
             let newLegend = document.querySelector('.legend');
             newLegend.innerHTML = '';
-            newData.forEach((d, idx) => {
-                let li = document.createElement('li');
-                li.style.setProperty('--color', colors(idx));  // Use normal color scheme
-                li.innerHTML = `<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`;
-                newLegend.appendChild(li);
+            newData.forEach((d) => {
+                newLegend.append('li').attr('style', "--color:#d0457c").html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
             });
         }else{
             renderProjects(projects, projectsContainer, 'h2');
             let newData = recalculate(projects);
-            let newSVG = d3.select("svg");
-            newSVG.selectAll('path').remove();  // Remove old pie chart slices
       
-            let newLegend = document.querySelector('.legend');
+            let newLegend = document.querySelectorA('.legend');
             newLegend.innerHTML = ''; 
             newData.forEach((d, idx) => {
                 newLegend.append('li').attr('style', `--color:${colors(idx)}`).html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
@@ -263,9 +256,9 @@ for (let i = 0; i < arcs.length; i++) {
   
     // Set the label and value
     li.innerHTML += `${data[i].label} <em>(${data[i].value})</em>`;
-  
+    let newLegend = document.querySelector('.legend');
     newLegend.appendChild(li);
-    
+    let newSVG = d3.select('svg');
     newSVG.appendChild(path);
     });
 }
