@@ -27,20 +27,16 @@ for (let d of data) {
 }
 let angle = 0;
 // let arcData = [];
+let sliceGenerator = d3.pie();
 let arcData = sliceGenerator(data);
-
+let arcs = arcData.map((d) => arcGenerator(d));
 for (let d of data) {
   let endAngle = angle + (d / total) * 2 * Math.PI;
   arcData.push({ startAngle: angle, endAngle });
   angle = endAngle;
 }
 // let arcs = arcData.map((d) => arcGenerator(d));
-let arcs = arcData.map((d) => arcGenerator(d));
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
-
-let sliceGenerator = d3.pie();
-
-
 arcs.forEach((arc, idx) => {
     d3.select('svg') 
       .append('path')
