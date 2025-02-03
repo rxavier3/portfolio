@@ -140,7 +140,7 @@ function renderFilteredProjects(filteredProjects, containerElement, headingLevel
     newSVG.selectAll('path').remove();  // Remove all paths (pie slices)
   
     // Clear the legend
-    let newLegend = d3.select('legend');
+    let newLegend = d3.select('.legend');
     newLegend.selectAll('path').remove(); // Clear the legend
   
     // Re-render the pie chart (arcs)
@@ -154,7 +154,7 @@ function renderFilteredProjects(filteredProjects, containerElement, headingLevel
     });
 
     newData.forEach((d, idx) => {
-        legend.append('li')
+        newLegend.append('li')
               .attr('style', `--color:${colors(idx)}`) 
               .html(`<span class="swatch" style="background-color: ${colors(idx)}"></span> ${d.label} <em>(${d.value})</em>`);
     });
