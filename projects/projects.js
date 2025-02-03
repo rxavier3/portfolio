@@ -27,9 +27,9 @@ function renderProjects(projects, container, headerTag) {
         projectTitle.textContent = project.title;
         projectElement.appendChild(projectTitle);
 
-        // Create a new div to wrap both the description and the year
+        // Create a wrapper div for description and year
         const projectDetails = document.createElement('div');
-        projectDetails.classList.add('project-details'); // Optional, for styling
+        projectDetails.classList.add('project-details'); // Optional class for styling
 
         // Create and append the project description
         const projectDescription = document.createElement('p');
@@ -39,7 +39,6 @@ function renderProjects(projects, container, headerTag) {
         // Create and append the project year
         const projectYear = document.createElement('p');
         projectYear.textContent = `Year: ${project.year}`;
-        projectYear.classList.add('project-year');  // Optional, for styling
         projectDetails.appendChild(projectYear);
 
         // Append the details div to the project element
