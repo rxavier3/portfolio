@@ -97,7 +97,7 @@ function setQuery(newQuery) {
 
 let searchInput = document.getElementsByClassName('searchBar')[0];
 function renderFilteredProjects(filteredProjects, containerElement, headingLevel = 'h2') {
-    
+    containerElement.innerHTML = ''; 
   
     // Render the filtered projects
     filteredProjects.forEach(project => {
