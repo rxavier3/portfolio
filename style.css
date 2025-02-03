@@ -311,3 +311,13 @@ ul.legend li em {
   font-style: italic;
   color: #555;
 }
+
+svg:has(path:hover) {
+  path:not(:hover) {
+    opacity: 50%;
+  }
+}
+
+path {
+  transition: 300ms;
+}
