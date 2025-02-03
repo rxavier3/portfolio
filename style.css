@@ -245,7 +245,7 @@ margin-bottom: 10px
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /
+  grid-template-columns: repeat(4, 1fr); 
   gap: 10px; 
 }
 
@@ -271,4 +271,38 @@ svg {
 
   /* Do not clip shapes outside the viewBox */
   overflow: visible;
+}
+ul.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 20px;
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+ul.legend li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+ul.legend li .swatch {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  aspect-ratio: 1 / 1;
+  background-color: var(--color);
+  border-radius: 50%;
+}
+
+ul.legend li em {
+  font-style: italic;
+  color: #555;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Adjust spacing between the pie chart and the legend */
 }
