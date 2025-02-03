@@ -44,11 +44,18 @@ if (projectsTitle) {
 let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 
 // Data for the pie chart
-let data = [1, 2, 3, 4, 5, 5];
+let data = [
+    { value: 1, label: 'apples' },
+    { value: 2, label: 'oranges' },
+    { value: 3, label: 'mangos' },
+    { value: 4, label: 'pears' },
+    { value: 5, label: 'limes' },
+    { value: 5, label: 'cherries' },
+  ];
 
 
 // Use d3.pie() to calculate the start and end angles for each slice
-let sliceGenerator = d3.pie();
+let sliceGenerator = d3.pie().value((d) => d.value);
 let arcData = sliceGenerator(data);
 
 // Now we use arcGenerator to create the path strings for each slice
