@@ -264,3 +264,11 @@ margin-bottom: 10px
   font-variant-numeric: oldstyle-nums;
   color: gray;
 }
+
+svg {
+  max-width: 20em;
+  margin-block: 2em;
+
+  /* Do not clip shapes outside the viewBox */
+  overflow: visible;
+}
