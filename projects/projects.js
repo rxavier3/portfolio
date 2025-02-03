@@ -1,5 +1,6 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import { fetchJSON, renderProjects } from '../global.js';
+import { svg } from "d3-fetch";
 const projects = await fetchJSON('../lib/projects.json');
 const projectsContainer = document.querySelector('.projects');
 renderProjects(projects, projectsContainer, 'h2');
@@ -140,51 +141,23 @@ function renderFilteredProjects(filteredProjects, containerElement, headingLevel
     newSVG.selectAll('path').remove();  // Remove all paths (pie slices)
   
     // Clear the legend
-    document.querySelector('.legend').innerHTML = '';  // Clear the legend
+    let newLegend = d3.select('legend');
+    newLegend.selectAll('path').remove(); // Clear the legend
   
     // Re-render the pie chart (arcs)
-    newArcs.forEach((arc, i) => {
+    newArcs.forEach((arc, idx) => {
       // Append the path for each arc (slice)
       newSVG.append('path')
         .attr('d', arc)
-        .attr('fill', colors(i))  // Use the color scale
+        .attr('fill', colors(idx))  // Use the color scale
         .style('cursor', 'pointer')
-        .on('click', (event) => {
-          // Toggle the selection state
-          selectedIndex = selectedIndex === i ? -1 : i;
-  
-          // Update the pie slices
-          newSVG.selectAll('path').each((p, idx) => {
-            if (idx === selectedIndex) {
-              d3.select(p).classed('selected', true);
-            } else {
-              d3.select(p).classed('selected', false);
-            }
-          });
-  
-          // Update the legend items
-          document.querySelectorAll('.legend li').forEach((li, idx) => {
-            if (idx === selectedIndex) {
-              li.classList.add('selected');
-            } else {
-              li.classList.remove('selected');
-            }
-          });
-        });
-  
-      // Create the corresponding legend item
-      let li = document.createElement('li');
-      li.style.setProperty('--color', colors(i));
-  
-      // Create the swatch (color box) for the legend item
-      let swatch = document.createElement('span');
-      swatch.className = 'swatch';
-      swatch.style.backgroundColor = colors(i);
-  
-      li.appendChild(swatch);
-      li.innerHTML += `${newData[i].label} <em>(${newData[i].value})</em>`;
-  
-      document.querySelector('.legend').appendChild(li);
+      
+    });
+
+    newData.forEach((d, idx) => {
+        legend.append('li')
+              .attr('style', `--color:${colors(idx)}`) 
+              .html(`<span class="swatch" style="background-color: ${colors(idx)}"></span> ${d.label} <em>(${d.value})</em>`);
     });
   });
 
@@ -258,8 +231,8 @@ for (let i = 0; i < arcs.length; i++) {
     li.innerHTML += `${data[i].label} <em>(${data[i].value})</em>`;
     let newLegend = document.querySelector('.legend');
     newLegend.appendChild(li);
-    let newSVG = d3.select('svg');
-    newSVG.appendChild(path);
+    
+    svg.appendChild(path);
     });
 }
 
