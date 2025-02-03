@@ -71,3 +71,10 @@ arcs.forEach((arc, idx) => {
     .attr('d', arc) // Apply the generated path for the slice
     .attr('fill', colors(idx));
 });
+
+let legend = d3.select('.legend');
+data.forEach((d, idx) => {
+    legend.append('li')
+          .attr('style', `--color:${colors(idx)}`) 
+          .html(`<span class="swatch" style="background-color: ${colors(idx)}"></span> ${d.label} <em>(${d.value})</em>`);
+});
