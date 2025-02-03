@@ -120,7 +120,7 @@ searchInput.addEventListener('change', (event) => {
 
 
 let selectedIndex = -1;
-
+const svg = d3.select('svg');
 for (let i = 0; i < arcs.length; i++) {
   const svgNS = "http://www.w3.org/2000/svg";
   let path = document.createElementNS(svgNS, "path");
