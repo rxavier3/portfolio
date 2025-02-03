@@ -272,13 +272,24 @@ svg {
   /* Do not clip shapes outside the viewBox */
   overflow: visible;
 }
-ul.legend {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+
+
+.container {
+  display: flex;
+  align-items: flex-start;
   gap: 20px;
+}
+
+ul.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   list-style-type: none;
-  padding: 0;
-  margin-top: 20px;
+  padding: 10px;
+  margin: 0;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
 ul.legend li {
@@ -299,10 +310,4 @@ ul.legend li .swatch {
 ul.legend li em {
   font-style: italic;
   color: #555;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  gap: 20px; /* Adjust spacing between the pie chart and the legend */
 }
