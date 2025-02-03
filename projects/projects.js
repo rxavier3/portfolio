@@ -187,6 +187,87 @@ function renderFilteredProjects(filteredProjects, containerElement, headingLevel
       document.querySelector('.legend').appendChild(li);
     });
   });
+
+let selectedIndex = -1;
+function recalculate(projectsGiven) {
+    let newRolledData = d3.rollups(
+        projectsGiven,
+        (v) => v.length,
+        (d) => d.year,
+    );
+    let newData = newRolledData.map(([year, count]) => {
+        return { value: count, label: year };
+    });
+    return newData;
+}
+for (let i = 0; i < arcs.length; i++) {
+    const svgNS = "http://www.w3.org/2000/svg"; // to create <path> tag in memory
+    let path = document.createElementNS(svgNS, "path");
+    
+    path.setAttribute("d", arcs[i]);
+    path.setAttribute("fill", colors(i));
+    let newLegend = document.querySelector('.legend');
+    path.addEventListener('click', (event) => {
+        selectedIndex = selectedIndex === i ? -1 : i;
+        document.querySelectorAll('path').forEach((p, i) => { // path, index
+            if (i === selectedIndex) {
+                p.classList.add('selected');
+            } else {
+                p.classList.remove('selected');
+            }
+        })
+        if (selectedIndex !== -1) {
+            // retrieve the selected year
+            let selectedYear = data[selectedIndex].label
+            // filter projects based on the year
+            let filteredProjects2 = projects.filter(project => project.year === selectedYear);
+            renderFilteredProjects(filteredProjects2, projectsContainer, 'h2');
+            let newData = recalculate(filteredProjects2)
+            let newSVG = d3.select('svg');
+            newSVG.selectAll('path').remove();  // Remove old pie chart slices
+
+            let newLegend = document.querySelector('.legend');
+            newLegend.innerHTML = '';
+            newData.forEach((d, idx) => {
+                let li = document.createElement('li');
+                li.style.setProperty('--color', colors(idx));  // Use normal color scheme
+                li.innerHTML = `<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`;
+                newLegend.appendChild(li);
+            });
+        }else{
+            renderProjects(projects, projectsContainer, 'h2');
+            let newData = recalculate(projects);let newSVG = d3.select('svg');
+            newSVG.selectAll('path').remove();  // Remove old pie chart slices
+      
+            let newLegend = document.querySelector('.legend');
+            newLegend.innerHTML = ''; 
+            newData.forEach((d, idx) => {
+                newLegend.append('li').attr('style', `--color:${colors(idx)}`).html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+            });
+
+        }
+    
+  
+    let li = document.createElement('li');
+    li.style.setProperty('--color', colors(i));
+  
+    // Create the swatch span
+    let swatch = document.createElement('span');
+    swatch.className = 'swatch';
+    swatch.style.backgroundColor = colors(i);
+    
+    // Append the swatch to the list item
+    li.appendChild(swatch);
+  
+    // Set the label and value
+    li.innerHTML += `${data[i].label} <em>(${data[i].value})</em>`;
+  
+    newLegend.appendChild(li);
+    
+    svg.appendChild(path);
+    });
+}
+
   
   
 
@@ -196,3 +277,4 @@ function renderFilteredProjects(filteredProjects, containerElement, headingLevel
 
 
 
+    
