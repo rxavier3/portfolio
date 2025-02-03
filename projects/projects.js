@@ -198,8 +198,8 @@ for (let i = 0; i < arcs.length; i++) {
             let newSVG = d3.select("svg");
             newSVG.selectAll('path').remove();  // Remove old pie chart slices
 
-            let newLegend = document.querySelector('.legend');
-            newLegend.innerHTML = '';
+            let newLegend = d3.select(".legend");
+            newLegend.selectAll('path').remove(); 
             newData.forEach((d) => {
                 newLegend.append('li').attr('style', "--color:#d0457c").html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
             });
@@ -207,8 +207,8 @@ for (let i = 0; i < arcs.length; i++) {
             renderProjects(projects, projectsContainer, 'h2');
             let newData = recalculate(projects);
       
-            let newLegend = document.querySelectorA('.legend');
-            newLegend.innerHTML = ''; 
+            let newLegend = d3.select(".legend");
+            newLegend.selectAll('path').remove(); 
             newData.forEach((d, idx) => {
                 newLegend.append('li').attr('style', `--color:${colors(idx)}`).html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
             });
@@ -229,7 +229,6 @@ for (let i = 0; i < arcs.length; i++) {
   
     // Set the label and value
     li.innerHTML += `${data[i].label} <em>(${data[i].value})</em>`;
-    let newLegend = document.querySelector('.legend');
     newLegend.appendChild(li);
     
     svg.appendChild(path);
