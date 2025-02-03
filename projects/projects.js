@@ -114,6 +114,7 @@ function renderFilteredProjects(filteredProjects, containerElement, headingLevel
     });
   }
   searchInput.addEventListener('change', (event) => {
+    // Get the filtered projects based on search query
     let filteredProjects = setQuery(event.target.value);
     renderFilteredProjects(filteredProjects, projectsContainer, 'h2');
     
@@ -123,33 +124,36 @@ function renderFilteredProjects(filteredProjects, containerElement, headingLevel
       (v) => v.length,
       (d) => d.year
     );
-  
+    
     // Re-calculate data
     let newData = newRolledData.map(([year, count]) => {
       return { value: count, label: year };
     });
   
     // Re-calculate slice generator, arc data, arc, etc.
-    let newSliceGenerator = d3.pie();
+    let newSliceGenerator = d3.pie().value(d => d.value);
     let newArcData = newSliceGenerator(newData);
-    let newArcs = newArcData.map((d) => arcGenerator(d));
+    let newArcs = newArcData.map(d => arcGenerator(d));
   
-    // Clear up paths and legends
+    // Clear the SVG paths (but not the whole SVG element)
     let newSVG = d3.select('svg');
-    newSVG.selectAll('path').remove();
-    
-    document.querySelector('.legend').innerHTML = '';
+    newSVG.selectAll('path').remove();  // Remove all paths (pie slices)
   
-    // Update paths and legends
+    // Clear the legend
+    document.querySelector('.legend').innerHTML = '';  // Clear the legend
+  
+    // Re-render the pie chart (arcs)
     newArcs.forEach((arc, i) => {
-      // Append path to SVG
+      // Append the path for each arc (slice)
       newSVG.append('path')
         .attr('d', arc)
-        .attr('fill', colors(i))
+        .attr('fill', colors(i))  // Use the color scale
         .style('cursor', 'pointer')
         .on('click', (event) => {
+          // Toggle the selection state
           selectedIndex = selectedIndex === i ? -1 : i;
   
+          // Update the pie slices
           newSVG.selectAll('path').each((p, idx) => {
             if (idx === selectedIndex) {
               d3.select(p).classed('selected', true);
@@ -158,6 +162,7 @@ function renderFilteredProjects(filteredProjects, containerElement, headingLevel
             }
           });
   
+          // Update the legend items
           document.querySelectorAll('.legend li').forEach((li, idx) => {
             if (idx === selectedIndex) {
               li.classList.add('selected');
@@ -167,10 +172,11 @@ function renderFilteredProjects(filteredProjects, containerElement, headingLevel
           });
         });
   
-      // Create legend item
+      // Create the corresponding legend item
       let li = document.createElement('li');
       li.style.setProperty('--color', colors(i));
   
+      // Create the swatch (color box) for the legend item
       let swatch = document.createElement('span');
       swatch.className = 'swatch';
       swatch.style.backgroundColor = colors(i);
@@ -181,6 +187,7 @@ function renderFilteredProjects(filteredProjects, containerElement, headingLevel
       document.querySelector('.legend').appendChild(li);
     });
   });
+  
   
 
 
