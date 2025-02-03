@@ -88,8 +88,11 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
       article.innerHTML = `
           <${headingLevel}>${project.title}</${headingLevel}>
           <img src="${project.image}" alt="${project.title}">
-          <p>${project.description}</p>
-          <p class = "project-year">${project.year}</p>
+          <div class = "project-details">
+
+            <p>${project.description}</p>
+            <p class = "project-year">${project.year}</p>
+          </div>
       `;
       containerElement.appendChild(article);
   });
@@ -112,3 +115,4 @@ export async function fetchGitHubData(username) {
     console.error('Error fetching or parsing GitHub data:', error);
   }
 }
+
