@@ -169,11 +169,11 @@ function recalculate(projectsGiven) {
     });
     return newData;
 }
-for (let i = 0; i < arcs.length; i++) {
+
   const svgNS = "http://www.w3.org/2000/svg";
   d3.select("#pie-chart").selectAll("path").remove();
 
-  for (let i = 0; i < arcsGiven.length; i++) {
+  for (let i = 0; i < arcs.length; i++) {
       let path = document.createElementNS(svgNS, "path");
       path.setAttribute("d", arcsGiven[i]);
       path.setAttribute("fill", colors(i));
@@ -228,7 +228,7 @@ for (let i = 0; i < arcs.length; i++) {
     
     // svg.appendChild(path);
     
-}
+
 
   
   
