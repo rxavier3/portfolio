@@ -113,10 +113,75 @@ function renderFilteredProjects(filteredProjects, containerElement, headingLevel
       containerElement.appendChild(article);
     });
   }
-searchInput.addEventListener('change', (event) => {
-  let updatedProjects = setQuery(event.target.value);
-  renderFilteredProjects(updatedProjects, projectsContainer);
-});
+  searchInput.addEventListener('change', (event) => {
+    let filteredProjects = setQuery(event.target.value);
+    renderFilteredProjects(filteredProjects, projectsContainer, 'h2');
+    
+    // Re-calculate rolled data
+    let newRolledData = d3.rollups(
+      filteredProjects,
+      (v) => v.length,
+      (d) => d.year
+    );
+  
+    // Re-calculate data
+    let newData = newRolledData.map(([year, count]) => {
+      return { value: count, label: year };
+    });
+  
+    // Re-calculate slice generator, arc data, arc, etc.
+    let newSliceGenerator = d3.pie();
+    let newArcData = newSliceGenerator(newData);
+    let newArcs = newArcData.map((d) => arcGenerator(d));
+  
+    // Clear up paths and legends
+    let newSVG = d3.select('svg');
+    newSVG.selectAll('path').remove();
+    
+    document.querySelector('.legend').innerHTML = '';
+  
+    // Update paths and legends
+    newArcs.forEach((arc, i) => {
+      // Append path to SVG
+      newSVG.append('path')
+        .attr('d', arc)
+        .attr('fill', colors(i))
+        .style('cursor', 'pointer')
+        .on('click', (event) => {
+          selectedIndex = selectedIndex === i ? -1 : i;
+  
+          newSVG.selectAll('path').each((p, idx) => {
+            if (idx === selectedIndex) {
+              d3.select(p).classed('selected', true);
+            } else {
+              d3.select(p).classed('selected', false);
+            }
+          });
+  
+          document.querySelectorAll('.legend li').forEach((li, idx) => {
+            if (idx === selectedIndex) {
+              li.classList.add('selected');
+            } else {
+              li.classList.remove('selected');
+            }
+          });
+        });
+  
+      // Create legend item
+      let li = document.createElement('li');
+      li.style.setProperty('--color', colors(i));
+  
+      let swatch = document.createElement('span');
+      swatch.className = 'swatch';
+      swatch.style.backgroundColor = colors(i);
+  
+      li.appendChild(swatch);
+      li.innerHTML += `${newData[i].label} <em>(${newData[i].value})</em>`;
+  
+      document.querySelector('.legend').appendChild(li);
+    });
+  });
+  
 
 
 let selectedIndex = -1;
