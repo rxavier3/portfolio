@@ -207,6 +207,7 @@ for (let i = 0; i < arcs.length; i++) {
     path.setAttribute("d", arcs[i]);
     path.setAttribute("fill", colors(i));
     let newLegend = document.querySelector('.legend');
+    let newSVG = d3.select('svg');
     path.addEventListener('click', (event) => {
         selectedIndex = selectedIndex === i ? -1 : i;
         document.querySelectorAll('path').forEach((p, i) => { // path, index
@@ -223,7 +224,7 @@ for (let i = 0; i < arcs.length; i++) {
             let filteredProjects2 = projects.filter(project => project.year === selectedYear);
             renderFilteredProjects(filteredProjects2, projectsContainer, 'h2');
             let newData = recalculate(filteredProjects2)
-            let newSVG = d3.select('svg');
+            let newSVG = d3.select("svg");
             newSVG.selectAll('path').remove();  // Remove old pie chart slices
 
             let newLegend = document.querySelector('.legend');
@@ -236,7 +237,8 @@ for (let i = 0; i < arcs.length; i++) {
             });
         }else{
             renderProjects(projects, projectsContainer, 'h2');
-            let newData = recalculate(projects);let newSVG = d3.select('svg');
+            let newData = recalculate(projects);
+            let newSVG = d3.select("svg");
             newSVG.selectAll('path').remove();  // Remove old pie chart slices
       
             let newLegend = document.querySelector('.legend');
@@ -264,7 +266,7 @@ for (let i = 0; i < arcs.length; i++) {
   
     newLegend.appendChild(li);
     
-    svg.appendChild(path);
+    newSVG.appendChild(path);
     });
 }
 
