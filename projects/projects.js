@@ -78,3 +78,26 @@ data.forEach((d, idx) => {
           .attr('style', `--color:${colors(idx)}`) 
           .html(`<span class="swatch" style="background-color: ${colors(idx)}"></span> ${d.label} <em>(${d.value})</em>`);
 });
+let query = '';
+
+function setQuery(newQuery) {
+  query = newQuery;
+
+  let filteredProjects = projects.filter((project) => {
+    if (query) {
+      let values = Object.values(project).join('\n').toLowerCase();
+      return values.includes(query.toLowerCase());
+    }
+
+    return true;
+  });
+
+  return filteredProjects;
+}
+
+let searchInput = document.getElementsByClassName('searchBar')[0];
+
+searchInput.addEventListener('change', (event) => {
+  let updatedProjects = setQuery(event.target.value);
+  // TODO: render updated projects!
+});
