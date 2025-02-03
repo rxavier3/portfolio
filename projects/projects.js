@@ -192,7 +192,7 @@ function renderFilteredProjects(filteredProjects, containerElement, headingLevel
 
 
  
-Copy
+
 let selectedIndex = -1;
 
 for (let i = 0; i < arcs.length; i++) {
