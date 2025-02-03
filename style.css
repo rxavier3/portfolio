@@ -312,35 +312,3 @@ ul.legend li em {
   color: #555;
 }
 
-svg:has(path:hover) {
-  path:not(:hover) {
-    opacity: 50%;
-  }
-}
-
-path {
-  transition: opacity 300ms, fill 300ms;
-}
-
-svg:has(path:hover) {
-  path:not(:hover) {
-    opacity: 50%;
-  }
-}
-
-.selected {
-  --color: oklch(60% 45% 0) !important;
-
-  &:is(path) {
-    fill: var(--color);
-  }
-}
-
-li {
-  transition: color 300ms, font-weight 300ms;
-}
-
-li.selected {
-  font-weight: bold;
-  color: var(--color);
-}
