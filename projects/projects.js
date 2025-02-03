@@ -193,45 +193,6 @@ function renderFilteredProjects(filteredProjects, containerElement, headingLevel
 
  
 
-let selectedIndex = -1;
 
-for (let i = 0; i < arcs.length; i++) {
-  const svgNS = "http://www.w3.org/2000/svg";
-  let path = document.createElementNS(svgNS, "path");
-  
-  path.setAttribute("d", arcs[i]);
-  path.setAttribute("fill", colors(i));
-
-  path.addEventListener('click', (event) => {
-    selectedIndex = selectedIndex === i ? -1 : i;
-
-    // Remove the `selected` class from all wedges and legend items
-    document.querySelectorAll('path').forEach((p) => {
-      p.classList.remove('selected');
-    });
-    document.querySelectorAll('li').forEach((li) => {
-      li.classList.remove('selected');
-    });
-
-    // Add the `selected` class to the newly selected wedge and legend item
-    if (selectedIndex !== -1) {
-      document.querySelectorAll('path')[selectedIndex].classList.add('selected');
-      document.querySelectorAll('li')[selectedIndex].classList.add('selected');
-    }
-  });
-
-  let li = document.createElement('li');
-  li.style.setProperty('--color', colors(i));
-
-  let swatch = document.createElement('span');
-  swatch.className = 'swatch';
-  swatch.style.backgroundColor = colors(i);
-  
-  li.appendChild(swatch);
-  li.innerHTML += `${data[i].label} <em>(${data[i].value})</em>`;
-
-  document.querySelector('.legend').appendChild(li);
-  document.querySelector('svg').appendChild(path);
-}
 
 
