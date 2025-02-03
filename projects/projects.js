@@ -117,3 +117,51 @@ searchInput.addEventListener('change', (event) => {
   let updatedProjects = setQuery(event.target.value);
   renderFilteredProjects(updatedProjects, projectsContainer);
 });
+
+
+let selectedIndex = -1;
+
+for (let i = 0; i < arcs.length; i++) {
+  const svgNS = "http://www.w3.org/2000/svg";
+  let path = document.createElementNS(svgNS, "path");
+
+  path.setAttribute("d", arcs[i]);
+  path.setAttribute("fill", colors(i));
+  path.style.cursor = 'pointer';
+
+  path.addEventListener('click', (event) => {
+    selectedIndex = selectedIndex === i ? -1 : i;
+
+    document.querySelectorAll('path').forEach((p, index) => {
+      if (index === selectedIndex) {
+        p.classList.add('selected');
+      } else {
+        p.classList.remove('selected');
+      }
+    });
+
+    document.querySelectorAll('.legend li').forEach((li, index) => {
+      if (index === selectedIndex) {
+        li.classList.add('selected');
+      } else {
+        li.classList.remove('selected');
+      }
+    });
+  });
+
+  let li = document.createElement('li');
+  li.style.setProperty('--color', colors(i));
+
+  let swatch = document.createElement('span');
+  swatch.className = 'swatch';
+  swatch.style.backgroundColor = colors(i);
+
+  li.appendChild(swatch);
+
+  li.innerHTML += `${data[i].label} <em>(${data[i].value})</em>`;
+
+  document.querySelector('.legend').appendChild(li);
+  svg.appendChild(path);
+}
+
+
