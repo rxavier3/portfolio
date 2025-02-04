@@ -192,7 +192,7 @@ function recalculate(projectsGiven) {
           // retrieve the selected year
         let selectedYear = data[selectedIndex].label;
           // filter projects by the selected year
-        let filteredProjects = projectsGiven.filter((p) => p.year === selectedYear);
+        let filteredProjects = projects.filter((p) => p.year === selectedYear);
           // render filtered projects
         renderProjects(filteredProjects, projectsContainer, "h2");
       } else {
