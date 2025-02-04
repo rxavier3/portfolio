@@ -51,7 +51,7 @@ let rolledData = d3.rollups(
 // Data for the pie chart
 let data = rolledData.map(([year, count]) => {
     return { value: count, label: year };
-  });
+});
 
 
 // Use d3.pie() to calculate the start and end angles for each slice
@@ -96,24 +96,25 @@ function setQuery(newQuery) {
 }
 
 let searchInput = document.getElementsByClassName('searchBar')[0];
-function renderFilteredProjects(filteredProjects, containerElement, headingLevel = 'h2') {
-    containerElement.innerHTML = ''; 
+// function renderFilteredProjects(filteredProjects, containerElement, headingLevel = 'h2') {
+//     containerElement.innerHTML = ''; 
   
-    // Render the filtered projects
-    filteredProjects.forEach(project => {
-      const article = document.createElement('article');
-      article.innerHTML = `
-        <${headingLevel}>${project.title}</${headingLevel}>
-        <img src="${project.image}" alt="${project.title}">
-        <div class="project-details">
-          <p>${project.description}</p>
-          <p class="project-year">${project.year}</p>
-        </div>
-      `;
-      containerElement.appendChild(article);
-    });
-  }
-  searchInput.addEventListener('change', (event) => {
+//     // Render the filtered projects
+//     filteredProjects.forEach(project => {
+//       const article = document.createElement('article');
+//       article.innerHTML = `
+//         <${headingLevel}>${project.title}</${headingLevel}>
+//         <img src="${project.image}" alt="${project.title}">
+//         <div class="project-details">
+//           <p>${project.description}</p>
+//           <p class="project-year">${project.year}</p>
+//         </div>
+//       `;
+//       containerElement.appendChild(article);
+//     });
+//  }
+searchInput.addEventListener('input', (event) => {
+  console.log('changing!');
     // Get the filtered projects based on search query
     let filteredProjects = setQuery(event.target.value);
     renderProjects(filteredProjects, projectsContainer, 'h2');
@@ -202,11 +203,12 @@ function recalculate(projectsGiven) {
       // update the legend
       let newData = recalculate(filteredProjects);
       
-      let newLegend = d3.select(".legend");
+      let newLegend = d3.select(".legend").html("");
       newLegend.selectAll('path').remove(); 
       newData.forEach((d, idx) => {
           newLegend.append('li').attr('style', `--color:${colors(idx)}`).html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
-      });      });
+      });      
+      });
       d3.select("#pie-chart").node().appendChild(path);
   }
     
