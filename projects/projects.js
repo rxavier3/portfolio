@@ -200,7 +200,7 @@ function recalculate(projectsGiven) {
         renderProjects(projects, projectsContainer, "h2");
       }
       // update the legend
-      let newData = recalculate(projects);
+      let newData = recalculate(filteredProjects);
       
       let newLegend = d3.select(".legend");
       newLegend.selectAll('path').remove(); 
