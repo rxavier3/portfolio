@@ -290,6 +290,7 @@ ul.legend {
   border: 2px solid #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
+  margin-top: 150px;
 }
 
 ul.legend li {
@@ -312,6 +313,38 @@ ul.legend li em {
   color: #555;
 }
 
+/* .selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
+  &.swatch {
+    width: 100px;
+  }
+
+ 
+
+}
+
+
+
+svg:has(path:hover) {
+  path:not(:hover) {
+    opacity: 50%;
+  }
+} */
+
+path {
+  transition: opacity 300ms;
+  cursor: pointer;
+}
+
+&:has(path:hover) {
+  path:not(:hover) {
+    opacity: 0.5;
+  }
+}
 .selected {
   --color: oklch(60% 45% 0) !important;
 
@@ -319,15 +352,12 @@ ul.legend li em {
     fill: var(--color);
   }
 }
-
-svg:has(path:hover) {
-  path:not(:hover) {
-    opacity: 50%;
-  }
+.legend li .selected .swatch {
+  background-color: var(--color);
 }
 
-path {
-  transition: opacity 300ms;
-  cursor: pointer;
+.searchBar {
+  width: 100%;            /* Makes the input field take up the full width */
+
 }
 
