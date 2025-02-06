@@ -360,4 +360,7 @@ path {
   width: 100%;            /* Makes the input field take up the full width */
 
 }
+.projects {
+  margin-top: 20px; /* Adjust the value as needed */
+}
 
