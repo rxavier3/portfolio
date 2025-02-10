@@ -364,3 +364,66 @@ path {
   margin-top: 20px; /* Adjust the value as needed */
 }
 
+
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 10px; 
+}
+
+.stats dt {
+  grid-row: 1; /* Places all <dt> elements in the first row */
+  text-align: center; 
+}
+
+.stats dd {
+  grid-row: 2; 
+  text-align: center; 
+}
+/* You can adjust the appearance of your chart */
+.stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.dots circle {
+  transition: fill 0.3s ease-in-out;
+}
+
+/* Style for gridlines */
+.gridlines line {
+  stroke: #ddd;
+  stroke-width: 1;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity 200ms ease, visibility 200ms ease;
+}
+
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
+
+
