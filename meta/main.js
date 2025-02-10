@@ -211,6 +211,14 @@ function updateTooltipPosition(event) {
     // Add number of files in the codebase
     dl.append('dt').text('Number of files in the codebase');
     dl.append('dd').text(numFiles);
+    const maxFileLength = d3.max(data, (d) => d.length); // Maximum file length in lines
+    dl.append('dt').text('Maximum file length (lines)');
+    dl.append('dd').text(maxFileLength);
+
+  // Add Longest Line Length
+    const longestLine = d3.max(data, (d) => d.length); // Find longest line (in terms of characters)
+    dl.append('dt').text('Longest line length (characters)');
+    dl.append('dd').text(longestLine);
   }
   
   
