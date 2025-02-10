@@ -17,16 +17,15 @@ const usableArea = {
   height: height - margin.top - margin.bottom,
 };
 function brushSelector() {
-    const svg = document.querySelector('svg');
-    const brush = d3.select(svg).call(d3.brush());
+    const svg = document.querySelector('svg');  // Select the SVG element
   
-    // Ensure the brush overlay doesn't block interactions
-    brush.selectAll('.overlay')
-      .style('pointer-events', 'none');  // Disables pointer events on the overlay
+    // Apply the brush only if the SVG exists
+    d3.select(svg)
+      .call(d3.brush())
+      .selectAll('.dots, .overlay ~ *')
+      .raise();
+  }
   
-    // Raise dots and other elements above the brush area
-    d3.select(svg).selectAll('.dots, .overlay ~ *').raise();
-}
   
 
 
@@ -44,6 +43,8 @@ async function loadData() {
   // Process commits
   processCommits();
   console.log(commits);
+
+  displayStats();
   
   createScatterplot();
   brushSelector(); 
@@ -185,6 +186,33 @@ function updateTooltipPosition(event) {
     tooltip.style.left = `${event.clientX + 10}px`;  // Added offset to prevent overlap
     tooltip.style.top = `${event.clientY + 10}px`;
   }
+
+  
+
+  function displayStats() {
+    // Process commits first
+    processCommits();
+  
+    // Create the dl element
+    const dl = d3.select('#stats').append('dl').attr('class', 'stats');
+  
+    // Add total LOC
+    dl.append('dt').html('Total <abbr title="Lines of code">LOC</abbr>');
+    dl.append('dd').text(data.length);
+  
+    // Add total commits
+    dl.append('dt').text('Total commits');
+    dl.append('dd').text(commits.length);
+  
+    // Calculate the number of unique files
+    const uniqueFiles = d3.group(data, d => d.file);
+    const numFiles = uniqueFiles.size;
+  
+    // Add number of files in the codebase
+    dl.append('dt').text('Number of files in the codebase');
+    dl.append('dd').text(numFiles);
+  }
+  
   
   
   
