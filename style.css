@@ -454,7 +454,7 @@ circle.selected {
   fill: #ff6b6b;
 }
 
-#chart {
-  width: 100%;  /* Or a fixed width like 800px */
-  height: 500px;  /* Adjust the height as needed */
+#chart svg {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
 }

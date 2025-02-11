@@ -162,8 +162,11 @@ function createScatterplot() {
     const svg = d3
       .select('#chart')
       .append('svg')
-      .attr('viewBox', `0 0 ${width} ${height}`)
-      .style('overflow', 'visible');
+      .attr('width', width) // Set explicit width
+      .attr('height', height) // Set explicit height
+      .attr('viewBox', `0 0 ${width} ${height}`) // Set viewBox to match width and height
+      .style('overflow', 'visible')
+      .attr('transform', 'scale(1)'); 
   
     xScale = d3
       .scaleTime()
@@ -175,7 +178,6 @@ function createScatterplot() {
       .scaleLinear()
       .domain([0, 24])
       .range([usableArea.bottom, usableArea.top]);
-  
     const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
   
     const rScale = d3
