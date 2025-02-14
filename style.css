@@ -458,3 +458,7 @@ circle.selected {
   width: 100%;
   height: auto; /* Maintain aspect ratio */
 }
+svg {
+  width: 100%;
+  max-width: none;
+}
